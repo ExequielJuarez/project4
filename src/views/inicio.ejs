@@ -1,9 +1,9 @@
 <%- include('partials/head', { clasePagina: 'pagina-inicio' }) %>
 
 <section class="hero" id="hero">
-  <% for (let i = 1; i <= 3; i++) { %>
-    <div class="hero__fondo <%= i === 1 ? 'activo' : '' %>" style="--img: url('/img/hero-<%= i %>.jpg')"></div>
-  <% } %>
+  <% ["image1", "image7", "image5"].forEach((foto, i) => { %>
+    <div class="hero__fondo <%= i === 0 ? 'activo' : '' %>" style="--img: url('/img/<%= foto %>.png')"></div>
+  <% }) %>
   <div class="hero__velo"></div>
 
   <div class="hero__contenido">
@@ -45,7 +45,7 @@
 </section>
 
 <section class="menu-home">
-  <div class="menu-home__fondo" style="--img: url('/img/menu.jpg')"></div>
+  <div class="menu-home__fondo" style="--img: url('/img/image2.png')"></div>
   <div class="menu-home__contenido">
     <p class="etiqueta">Nuestro menú</p>
     <h2 class="titulo">Sabores que<br>se disfrutan de noche</h2>
@@ -56,7 +56,7 @@
 
 <section class="categorias">
   <% categorias.forEach((c) => { %>
-    <a href="/menu#<%= c.slug %>" class="categoria" style="--img: url('<%= c.imagen || '/img/' + c.slug + '.jpg' %>')">
+    <a href="/menu#<%= c.slug %>" class="categoria" style="--img: url('<%= c.imagen %>')">
       <span class="categoria__nombre"><%= c.nombre %></span>
       <span class="categoria__flecha" aria-hidden="true">→</span>
     </a>

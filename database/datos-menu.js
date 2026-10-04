@@ -1,7 +1,7 @@
 // Menú inicial de ejemplo (precios en pesos). Editable desde la base de datos.
 module.exports = [
   {
-    categoria: { nombre: "Rolls clásicos", slug: "rolls-clasicos", descripcion: "Los infaltables, bien armados." },
+    categoria: { nombre: "Rolls clásicos", slug: "rolls-clasicos", imagen: "/img/image4.png", descripcion: "Los infaltables, bien armados." },
     platos: [
       { nombre: "California Roll", descripcion: "Kani, palta y pepino, envuelto en sésamo.", precio: 9800, piezas: 8, destacado: true },
       { nombre: "Philadelphia Roll", descripcion: "Salmón rosado, queso crema y ciboulette.", precio: 11500, piezas: 8 },
@@ -10,7 +10,7 @@ module.exports = [
     ],
   },
   {
-    categoria: { nombre: "Rolls especiales", slug: "rolls-especiales", descripcion: "Creaciones únicas de la casa." },
+    categoria: { nombre: "Rolls especiales", slug: "rolls-especiales", imagen: "/img/image7.png", descripcion: "Creaciones únicas de la casa." },
     platos: [
       { nombre: "JB Especial", descripcion: "Salmón flameado, palta, salsa teriyaki y brotes.", precio: 14900, piezas: 8, destacado: true },
       { nombre: "Dragon Roll", descripcion: "Langostino tempura, palta por fuera y anguila.", precio: 15800, piezas: 8 },
@@ -19,7 +19,7 @@ module.exports = [
     ],
   },
   {
-    categoria: { nombre: "Sashimi y nigiri", slug: "sashimi-nigiri", descripcion: "Pescado fresco, corte tradicional." },
+    categoria: { nombre: "Sashimi y nigiri", slug: "sashimi-nigiri", imagen: "/img/image6.png", descripcion: "Pescado fresco, corte tradicional." },
     platos: [
       { nombre: "Sashimi de salmón", descripcion: "Cinco cortes de salmón rosado.", precio: 11800, piezas: 5 },
       { nombre: "Sashimi mixto", descripcion: "Salmón, atún y pesca blanca del día.", precio: 14500, piezas: 9, destacado: true },
@@ -28,7 +28,7 @@ module.exports = [
     ],
   },
   {
-    categoria: { nombre: "Bebidas", slug: "bebidas", descripcion: "Para acompañar la noche." },
+    categoria: { nombre: "Bebidas", slug: "bebidas", imagen: "/img/image5.png", descripcion: "Para acompañar la noche." },
     platos: [
       { nombre: "Sake caliente", descripcion: "Servido en tokkuri, 180 ml.", precio: 6500 },
       { nombre: "Vino tinto copa", descripcion: "Malbec de selección.", precio: 5200 },
