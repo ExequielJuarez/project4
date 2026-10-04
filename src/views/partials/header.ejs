@@ -1,0 +1,21 @@
+<% const enlaces = [["/", "Inicio"], ["/menu", "Menú"], ["/nosotros", "Nosotros"], ["/contacto", "Contacto"]]; %>
+<header class="cabecera" id="cabecera">
+  <a href="/" class="logo" aria-label="JB Sushi, inicio">
+    <span class="logo__marca">JB</span>
+    <span class="logo__texto">Sushi</span>
+  </a>
+
+  <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navegacion">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="nav" id="navegacion">
+    <ul class="nav__lista">
+      <% enlaces.forEach(([href, texto]) => { %>
+        <li><a href="<%= href %>" class="nav__link <%= currentPath === href ? 'activo' : '' %>"><%= texto %></a></li>
+      <% }) %>
+    </ul>
+    <a href="/reservar" class="boton boton--redondo nav__reservar">Reservar</a>
+  </nav>
+</header>
+<main>

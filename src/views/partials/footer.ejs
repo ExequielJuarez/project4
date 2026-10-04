@@ -1,0 +1,20 @@
+</main>
+<footer class="pie">
+  <div class="pie__marca">
+    <span class="logo__marca">JB</span>
+    <span class="logo__texto">Sushi</span>
+  </div>
+  <p class="pie__texto">Cenas · Martes a domingo · 20:00 a 00:00</p>
+  <ul class="pie__enlaces">
+    <li><a href="/menu">Menú</a></li>
+    <li><a href="/reservar">Reservar</a></li>
+    <li><a href="/contacto">Contacto</a></li>
+  </ul>
+  <p class="pie__copy">© <%= new Date().getFullYear() %> JB Sushi</p>
+</footer>
+<script src="/js/principal.js"></script>
+<% if (typeof scripts !== 'undefined') { scripts.forEach((s) => { %>
+<script src="/js/<%= s %>"></script>
+<% }) } %>
+</body>
+</html>

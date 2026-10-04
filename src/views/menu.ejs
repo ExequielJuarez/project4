@@ -1,0 +1,40 @@
+<%- include('partials/head', { clasePagina: 'pagina-interna' }) %>
+
+<section class="encabezado">
+  <p class="etiqueta">Nuestro menú</p>
+  <h1 class="titulo">Sabores que se disfrutan de noche</h1>
+</section>
+
+<nav class="menu-tabs" aria-label="Categorías">
+  <% categorias.forEach((c) => { %>
+    <a href="#<%= c.slug %>"><%= c.nombre %></a>
+  <% }) %>
+</nav>
+
+<div class="carta">
+  <% categorias.forEach((c) => { %>
+    <section class="carta__categoria" id="<%= c.slug %>">
+      <h2 class="carta__titulo"><%= c.nombre %></h2>
+      <% if (c.descripcion) { %><p class="carta__desc"><%= c.descripcion %></p><% } %>
+      <ul class="platos">
+        <% c.platos.forEach((p) => { %>
+          <li class="plato">
+            <div class="plato__info">
+              <h3><%= p.nombre %>
+                <% if (p.destacado) { %><span class="plato__tag">Recomendado</span><% } %>
+              </h3>
+              <% if (p.descripcion) { %><p><%= p.descripcion %></p><% } %>
+              <% if (p.piezas) { %><small><%= p.piezas %> piezas</small><% } %>
+            </div>
+            <span class="plato__precio"><%= formatoPrecio(p.precio) %></span>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+  <% }) %>
+  <div class="carta__cta">
+    <a href="/reservar" class="boton">Reservar mesa <span aria-hidden="true">→</span></a>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,72 @@
+<%- include('partials/head', { clasePagina: 'pagina-inicio' }) %>
+
+<section class="hero" id="hero">
+  <% for (let i = 1; i <= 3; i++) { %>
+    <div class="hero__fondo <%= i === 1 ? 'activo' : '' %>" style="--img: url('/img/hero-<%= i %>.jpg')"></div>
+  <% } %>
+  <div class="hero__velo"></div>
+
+  <div class="hero__contenido">
+    <p class="etiqueta">JB Sushi</p>
+    <h1 class="hero__titulo">Una experiencia<br>para la noche</h1>
+    <p class="hero__sub">Sushi, buena compañía<br>y el ambiente ideal.</p>
+    <a href="/menu" class="boton">Ver menú <span aria-hidden="true">→</span></a>
+  </div>
+
+  <div class="hero__scroll"><span>Scroll</span></div>
+
+  <div class="hero__control" aria-label="Control del carrusel">
+    <span class="hero__linea"></span>
+    <span class="hero__contador"><b id="slideActual">01</b> / 03</span>
+    <button type="button" id="slidePrev" aria-label="Anterior">‹</button>
+    <button type="button" id="slideNext" aria-label="Siguiente">›</button>
+  </div>
+</section>
+
+<section class="ventajas">
+  <ul class="ventajas__lista">
+    <li>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="18" rx="12" ry="6"/><path d="M12 18v9c0 3.3 5.4 6 12 6s12-2.7 12-6v-9"/><ellipse cx="24" cy="18" rx="5" ry="2.3"/></svg>
+      <span>Ingredientes<br>de primera</span>
+    </li>
+    <li>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40 40 8M14 42 42 14"/></svg>
+      <span>Sushi tradicional<br>y de autor</span>
+    </li>
+    <li>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M30 8a16 16 0 1 0 10 28A14 14 0 0 1 30 8Z"/></svg>
+      <span>Especialidad<br>en cenas</span>
+    </li>
+    <li>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 38C8 20 20 8 40 8c0 20-10 32-30 30Z"/><path d="M10 38 28 20"/></svg>
+      <span>Ambiente cálido<br>y moderno</span>
+    </li>
+  </ul>
+</section>
+
+<section class="menu-home">
+  <div class="menu-home__fondo" style="--img: url('/img/menu.jpg')"></div>
+  <div class="menu-home__contenido">
+    <p class="etiqueta">Nuestro menú</p>
+    <h2 class="titulo">Sabores que<br>se disfrutan de noche</h2>
+    <p class="texto">Rolls clásicos, creaciones únicas<br>y una selección de platos pensados<br>para los verdaderos amantes del sushi.</p>
+    <a href="/menu" class="boton boton--chico">Ver carta <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section class="categorias">
+  <% categorias.forEach((c) => { %>
+    <a href="/menu#<%= c.slug %>" class="categoria" style="--img: url('<%= c.imagen || '/img/' + c.slug + '.jpg' %>')">
+      <span class="categoria__nombre"><%= c.nombre %></span>
+      <span class="categoria__flecha" aria-hidden="true">→</span>
+    </a>
+  <% }) %>
+</section>
+
+<section class="reserva-cta">
+  <p class="reserva-cta__titulo"><span></span>Reservá tu mesa<span></span></p>
+  <p class="reserva-cta__texto">La mejor forma de vivir JB Sushi es en persona.</p>
+  <a href="/reservar" class="boton boton--chico">Reservar ahora <span aria-hidden="true">→</span></a>
+</section>
+
+<%- include('partials/footer') %>

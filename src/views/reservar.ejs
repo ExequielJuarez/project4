@@ -1,0 +1,67 @@
+<%- include('partials/head', { clasePagina: 'pagina-interna', scripts: ['reservas.js'] }) %>
+
+<section class="encabezado">
+  <p class="etiqueta">Reservas</p>
+  <h1 class="titulo">Reservá tu mesa</h1>
+</section>
+
+<section class="reservar">
+  <% if (exito) { %>
+    <div class="reservar__exito" role="status">
+      <h2>¡Reserva recibida!</h2>
+      <p><%= exito.nombre %>, te esperamos el <b><%= exito.fecha.split('-').reverse().join('/') %></b> a las <b><%= exito.hora %> hs</b>
+        para <b><%= exito.personas %></b> <%= exito.personas === 1 ? 'persona' : 'personas' %>.</p>
+      <p class="texto">Te vamos a confirmar por teléfono o email. Número de reserva: #<%= exito.id %></p>
+      <a href="/" class="boton boton--chico">Volver al inicio</a>
+    </div>
+  <% } else { %>
+    <form class="form" id="formReserva" method="post" action="/reservar" novalidate>
+      <% const campoError = (n) => errores[n] ? errores[n].msg : ''; %>
+      <div class="form__fila form__fila--2">
+        <label class="campo">Nombre
+          <input type="text" name="nombre" autocomplete="name" required value="<%= valores.nombre || '' %>">
+          <em class="campo__error" data-error="nombre"><%= campoError('nombre') %></em>
+        </label>
+        <label class="campo">Teléfono
+          <input type="tel" name="telefono" autocomplete="tel" required value="<%= valores.telefono || '' %>">
+          <em class="campo__error" data-error="telefono"><%= campoError('telefono') %></em>
+        </label>
+      </div>
+      <label class="campo">Email <small>(opcional)</small>
+        <input type="email" name="email" autocomplete="email" value="<%= valores.email || '' %>">
+        <em class="campo__error" data-error="email"><%= campoError('email') %></em>
+      </label>
+      <div class="form__fila form__fila--3">
+        <label class="campo">Fecha
+          <input type="date" name="fecha" min="<%= minFecha %>" required value="<%= valores.fecha || '' %>">
+          <em class="campo__error" data-error="fecha"><%= campoError('fecha') %></em>
+        </label>
+        <label class="campo">Horario
+          <select name="hora" required>
+            <option value="">Elegí…</option>
+            <% horarios.forEach((h) => { %>
+              <option value="<%= h %>" <%= valores.hora === h ? 'selected' : '' %>><%= h %> hs</option>
+            <% }) %>
+          </select>
+          <em class="campo__error" data-error="hora"><%= campoError('hora') %></em>
+        </label>
+        <label class="campo">Personas
+          <select name="personas" required>
+            <% for (let i = 1; i <= maxPersonas; i++) { %>
+              <option value="<%= i %>" <%= Number(valores.personas || 2) === i ? 'selected' : '' %>><%= i %></option>
+            <% } %>
+          </select>
+          <em class="campo__error" data-error="personas"><%= campoError('personas') %></em>
+        </label>
+      </div>
+      <label class="campo">Comentarios <small>(opcional)</small>
+        <textarea name="comentarios" rows="3" maxlength="300" placeholder="Cumpleaños, alergias, mesa preferida…"><%= valores.comentarios || '' %></textarea>
+        <em class="campo__error" data-error="comentarios"><%= campoError('comentarios') %></em>
+      </label>
+      <button type="submit" class="boton">Confirmar reserva <span aria-hidden="true">→</span></button>
+      <p class="form__aviso" id="formAviso" role="alert"></p>
+    </form>
+  <% } %>
+</section>
+
+<%- include('partials/footer') %>

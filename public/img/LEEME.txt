@@ -1,0 +1,4 @@
+Poné acá las fotos del restaurante (si faltan, se ve un fondo oscuro de reemplazo):
+  hero-1.jpg, hero-2.jpg, hero-3.jpg  -> carrusel de la portada
+  menu.jpg                            -> sección "Nuestro menú"
+  rolls-clasicos.jpg, rolls-especiales.jpg, sashimi-nigiri.jpg, bebidas.jpg -> tarjetas
